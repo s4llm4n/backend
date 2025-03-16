@@ -29,7 +29,7 @@ class authControllers{
             }
         } catch (error) {
             responseReturn(res,500,{error: error.message})
-        }
+        }  
     }
     // End Method
 
