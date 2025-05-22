@@ -15,4 +15,5 @@ const categorySchema = new Schema({
     }
 }, {timestamps: true})
 
+
 module.exports = model('categorys',categorySchema)
