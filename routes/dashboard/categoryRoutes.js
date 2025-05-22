@@ -2,6 +2,6 @@ const categoryController = require('../../controllers/dashboard/categoryControll
 const { authMiddleware } = require('../../middlewares/authMiddleware')
 const router = require('express').Router()
 
-router.post('/admin-login',authMiddleware, categoryController.add_category)
+router.post('/category-add',authMiddleware, categoryController.add_category)
 
 module.exports = router
