@@ -51,6 +51,11 @@ class productController{
     }
     /// end method
 
+    products_get = async (req, res) => {
+        console.log(req.query)
+        console.log(req.id)
+    }
+
 
 
     }
