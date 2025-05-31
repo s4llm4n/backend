@@ -4,6 +4,8 @@ const sellerCustomerModel = require('../models/chat/sellerCustomerModel')
 const { responseReturn } = require('../utils/response')
 const bcrypt = require('bcrypt')
 const { createToken } = require('../utils/tokenCreate')
+const cloudinary = require('cloudinary').v2
+const formidable = require("formidable")
 
 class authControllers{
     admin_login = async(req,res) => {
@@ -113,6 +115,27 @@ class authControllers{
             responseReturn(res,500,{error: 'Internal Server Error'})
         }
     } // End getUser Method 
+
+
+    profile_image_upload = async(req, res) => {
+        const {id} = req
+        const form = formidable({ multiples: true })
+        form.parse(req, async(err,_,files) => {
+            cloudinary.config({
+            cloud_name: process.env.cloud_name, 
+            api_key : process.env.api_key, 
+            api_secret : process.env.api_secret,
+            secure : true
+            })
+            const { image } =files
+
+            try {
+                
+            } catch (error) {
+                
+            }
+        })
+    }
 
 }
 
