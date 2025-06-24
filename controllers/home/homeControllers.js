@@ -69,6 +69,10 @@ class homeControllers{
     }
     // End Method
 
+    price_range_product = async (req, res) => {
+        
+    }
+
 
 }
 
