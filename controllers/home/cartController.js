@@ -36,6 +36,11 @@ class cartController{
         }
     }
     // End Method
+
+    get_cart_products = async(req, res) => {
+        console.log('helloo')
+    }
+
 }
 
 module.exports = new cartController()
