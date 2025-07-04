@@ -39,6 +39,7 @@ class cartController{
     // End Method
 
     get_cart_products = async(req, res) => {
+        const co = 5;
         const {userId } = req.params
         try {
             const cart_products = await cartModel.aggregate([{
@@ -76,10 +77,27 @@ class cartController{
             } else {
                 calculatePrice = calculatePrice + quantity * price
             }
-            
         } // End for
+        let p = []
+        let unique = [...new Set(stockProduct.map(p => p.products[0].sellerId.toString()))]
+        for (let i = 0; i < unique.length; i++) {
+            let price = 0;
+            for (let j = 0; j < stockProduct.length; j++) {
+                const tempProduct = stockProduct[j].products[0];
+                if (unique[i] === tempProduct.sellerId.toString()) {
+                    let pri = 0;
+                    if (tempProduct.discount !== 0) {
+                        pri = tempProduct.price - Math.floor((tempProduct.price * tempProduct.discount) / 100)
+                    } else {
+                        pri = tempProduct.price
+                    }
+                pri = pri - Math.floor((pri * co) / 100)
+                }
+            }
+            
+        }
 
-            console.log(buy_product_item)
+            console.log(calculatePrice)
         } catch (error) {
             console.log(error.message)
         }
