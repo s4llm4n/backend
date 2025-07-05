@@ -92,12 +92,37 @@ class cartController{
                         pri = tempProduct.price
                     }
                 pri = pri - Math.floor((pri * co) / 100)
+                price = price + pri * stockProduct[j].quantity
+                p[i] = {
+                    sellerId: unique[i],
+                    shopName: tempProduct.shopName,
+                    price,
+                    products: p[i] ? [
+                        ...p[i].products,
+                        {
+                            _id: stockProduct[j]._id,
+                            quantity: stockProduct[j].quantity,
+                            prodctInfo: tempProduct
+                        }
+                    ] : [{
+                            _id: stockProduct[j]._id,
+                            quantity: stockProduct[j].quantity,
+                            prodctInfo: tempProduct
+                    }]
                 }
-            }
-            
+                }
+            }    
         }
 
-            console.log(calculatePrice)
+        responseReturn(res,200,{
+            cart_products:p,
+            price: calculatePrice,
+            cart_product_count,
+            shipping_fee: 20 * p.length,
+            outOfStockProduct,
+            buy_product_item
+        })
+
         } catch (error) {
             console.log(error.message)
         }
