@@ -102,12 +102,12 @@ class cartController{
                         {
                             _id: stockProduct[j]._id,
                             quantity: stockProduct[j].quantity,
-                            prodctInfo: tempProduct
+                            productInfo: tempProduct
                         }
                     ] : [{
                             _id: stockProduct[j]._id,
                             quantity: stockProduct[j].quantity,
-                            prodctInfo: tempProduct
+                            productInfo: tempProduct
                     }]
                 }
                 }
