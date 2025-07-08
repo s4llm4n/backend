@@ -140,6 +140,33 @@ class cartController{
     }
     // End Method
 
+    quantity_inc = async (req, res) => {
+        const {cart_id} = req.params
+        try {
+            const product = await cartModel.findById(cart_id)
+            const {quantity} = product
+            await cartModel.findByIdAndUpdate(cart_id,{quantity: quantity + 1})
+            responseReturn(res,200,{message: 'Qty Updated'})
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    // End Method
+
+    
+    quantity_dec = async (req, res) => {
+        const {cart_id} = req.params
+        try {
+            const product = await cartModel.findById(cart_id)
+            const {quantity} = product
+            await cartModel.findByIdAndUpdate(cart_id,{quantity: quantity - 1})
+            responseReturn(res,200,{message: 'Qty Updated'})
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    // End Method
+
 }
 
 module.exports = new cartController()
