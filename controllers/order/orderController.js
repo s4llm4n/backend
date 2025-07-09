@@ -1,3 +1,5 @@
+const authOrderModel = require('../../models/authOrder')
+const customerOrder = require('../../models/customerOrder') 
 const moment = require("moment")
 
 class orderController{
@@ -6,9 +8,22 @@ class orderController{
         let authorOrderData = []
         let cardId = []
         const tempDate = moment(Date.now()).format('LLL')
-        console.log(tempDate)
-    }
 
+        let customerOrderProduct = []
+        
+        for (let i = 0; i < products.length; i++) {
+            const pro = products[i].products
+            for (let j = 0; j < pro.length; j++) {
+                const tempCusPro = pro[j].productInfo;
+                tempCusPro.quantity = pro[j].quantity
+                customerOrderProduct.push(tempCusPro)
+                if (condition) {
+                    
+                }
+                // console.log(tempCusPro)
+            }
+        }
+    }
     // End Method
 }
 
