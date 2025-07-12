@@ -149,6 +149,10 @@ class orderController{
         }
     }
 
+    get_order_details = async (req, res) => {
+        console.log(req.params)
+    }
+
 }
 
 module.exports = new orderController()
