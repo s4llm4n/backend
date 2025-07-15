@@ -1,6 +1,7 @@
 const cartModel = require("../../models/cartModel")
 const { responseReturn } = require('../../utils/response')
 const { mongo: {ObjectId}} = require('mongoose')
+const wishlistModel = require('../../models/wishlistModel')
 
 class cartController{
 
@@ -166,6 +167,25 @@ class cartController{
         }
     }
     // End Method
+
+    add_wishlist = async (req, res) => {
+        const { slug } = req.body 
+        try {
+            const product = await wishlistModel.findOne({slug})
+            if (product) {
+                responseReturn(res, 404 ,{
+                    error: 'Product Is Already In Wishlist'
+                })
+            } else {
+                await wishlistModel.create(req.body) 
+                responseReturn(res, 201 ,{
+                    message: 'Product Add to Wishlist Success'
+                })
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
 }
 
