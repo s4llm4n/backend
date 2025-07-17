@@ -204,6 +204,19 @@ class cartController{
         }
     }
 
+    remove_wishlist = async (req, res) => {
+        const {wishlistId} = req.params
+        try {
+            const wishlist = await wishlistModel.findByIdAndDelete(wishlistId) 
+            responseReturn(res, 200,{
+                message: 'Wisshlist Product Remove',
+                wishlistId
+            })
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
 }
 
 module.exports = new cartController()
