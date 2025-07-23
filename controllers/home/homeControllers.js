@@ -205,7 +205,7 @@ class homeControllers{
         const {productId} = req.params
         let {pageNo} = req.query
         pageNo = parseInt(pageNo)
-        const limit =5
+        const limit = 5
         const skipPage = limit * (pageNo - 1)
 
         try {
@@ -259,7 +259,7 @@ class homeControllers{
             if (rating_review[i].rating === getRating[j]._id) {
                 rating_review[i].sum = getRating[j].count 
                 break
-            }
+             }
         } 
     }
 
@@ -269,7 +269,7 @@ class homeControllers{
     const reviews = await reviewModel.find({
         productId
     }).skip(skipPage).limit(limit).sort({createdAt: -1})
-
+    
     responseReturn(res, 200, {
         reviews,
         totalReview: getAll.length,
