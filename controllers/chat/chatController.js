@@ -145,7 +145,7 @@ class chatController{
             )
 
 
-            const data1 = await sellerCustomerModel.findOne({ myId : selleerId })
+            const data1 = await sellerCustomerModel.findOne({ myId : sellerId })
             let myFriends1 = data.myFriends
             let index1 = myFriends1.findIndex(f => f.fdId === userId)
             while (index1 > 0) {
@@ -159,9 +159,11 @@ class chatController{
                     myId: userId
                 },
                 {
-                    myFriends
+                    myFriends1
                 }
             )
+
+            responseReturn(res, 201,{message})
 
         } catch (error) {
             console.log(error)
