@@ -171,6 +171,11 @@ class chatController{
     }
     //End Method
 
+    get_customers = async (req, res) => {
+        console.log(req.params)
+    }
+    //End Method
+
 }
 
 module.exports = new chatController()
