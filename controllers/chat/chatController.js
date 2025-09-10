@@ -354,8 +354,8 @@ class chatController{
     //End Method
 
     get_seller_messages = async (req, res) => {
-        const { receiverId } = req.params
-        const id = ""
+        const  receiverId = ""
+        const {id} = req
 
         try {
             const messages = await adminSellerMessage.find({
@@ -380,14 +380,8 @@ class chatController{
                     }
                 ]
             })
-
-            let currentSeller = {}
-            if (receiverId) {
-                currentSeller = await sellerModel.findById(receiverId)
-            }
             responseReturn(res, 200, {
-                messages,
-                currentSeller
+                messages
             })
         } catch (error) {
             console.log(error)
