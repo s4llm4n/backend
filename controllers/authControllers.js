@@ -169,8 +169,9 @@ class authControllers{
     // End Method
 
     logout = async (req,res) => {
+
         try {
-            res.cokie('accessToken',null,{
+            res.cookie('accessToken',null,{
                 expires : new Date(Date.now()),
                 httpOnly: true
             })
