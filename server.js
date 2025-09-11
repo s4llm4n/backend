@@ -83,6 +83,17 @@ io.on('connection', (soc) => {
             soc.to(seller.socketId).emit('customer_message', msg)
         }
     })
+    soc.on('send_message_admin_to_seller',(msg) => {
+        const seller = findSeller(msg.receiverId)
+        if (seller !==undefined) {
+            soc.to(seller.socketId).emit('received_admin_message', msg)
+        }
+    })
+    soc.on('send_message_seller_to_admin',(msg) => {
+        if (admin.socketId) {
+            soc.to(admin.socketId).emit('received_seller_message', msg)
+        }
+    })
 
 
     soc.on('add_admin',(adminInfo) => {
