@@ -1,5 +1,5 @@
 const formidable = require("formidable")
-const { responseReturn } = require("../../utils/response")
+const { responseReturn }   = require("../../utils/response")
 const cloudinary = require('cloudinary').v2
 const sellerModel = require('../../models/sellerModel')
 const categoryModel = require("../../models/categoryModel")
@@ -56,7 +56,7 @@ class sellerController{
         page = parseInt(page)
         parPage= parseInt(parPage)
 
-        const skipPage = parPage * (page -1) 
+        const skipPage = parPage * (page - 1) 
 
         try {
             if (searchValue) {
