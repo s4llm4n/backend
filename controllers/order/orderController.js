@@ -226,6 +226,21 @@ class orderController{
         }
     }
     // End Method
+
+    admin_order_status_update = async(req, res) => {
+        const { orderId } = req.params
+        const { status } = req.body
+        try {
+            await customerOrder.findByIdAndUpdate(orderId, {
+                delivery_status : status
+            })
+            responseReturn(res,200, {message: 'order status change success'})
+        } catch (error) {
+            console.log('get admin status error' + error.message)
+            responseReturn(res,500, {message: 'Internal Server Error'})
+        }
+    }
+
 }
 
 module.exports = new orderController()
